@@ -31,34 +31,31 @@ def main():
         print(f"[*] Found 'whois' executable at: {whois_path}")
 
         # --- List /etc contents ---
-        print("[*] Listing contents of /etc...")
-        try:
-            etc_contents = os.listdir('/etc')
-            for item in etc_contents:
-                print(f"  - {item}")
-        except Exception as e:
-            print(f"[!] Error listing /etc: {e}", file=sys.stderr)
-        print("---------------------------")
+        # print("[*] Listing contents of /etc...")
+        # try:
+        #     etc_contents = os.listdir('/etc')
+        #     for item in etc_contents:
+        #         print(f"  - {item}")
+        # except Exception as e:
+        #     print(f"[!] Error listing /etc: {e}", file=sys.stderr)
+        # print("---------------------------")
         # --- End of /etc listing ---
 
-        #TODO: from here...
-                
-
         # --- Check for common network configuration files ---
-        config_files = ["/etc/nsswitch.conf", "/etc/resolv.conf", "/etc/named.conf", "/etc/services"]
-        print("[*] Checking for common network configuration files...")
-        for file_path in config_files:
-            if os.path.exists(file_path):
-                print(f"[*] Found configuration file: {file_path}")
-                try:
-                    with open(file_path, 'r') as f:
-                        print(f"--- Contents of {file_path} ---")
-                        print(f.read().strip())
-                        print(f"------------------------------")
-                except Exception as e:
-                    print(f"[!] Error reading {file_path}: {e}", file=sys.stderr)
-            else:
-                print(f"[*] Configuration file not found: {file_path}")
+        # config_files = ["/etc/nsswitch.conf", "/etc/resolv.conf", "/etc/named.conf", "/etc/services"]
+        # print("[*] Checking for common network configuration files...")
+        # for file_path in config_files:
+        #     if os.path.exists(file_path):
+        #         print(f"[*] Found configuration file: {file_path}")
+        #         try:
+        #             with open(file_path, 'r') as f:
+        #                 print(f"--- Contents of {file_path} ---")
+        #                 print(f.read().strip())
+        #                 print(f"------------------------------")
+        #         except Exception as e:
+        #             print(f"[!] Error reading {file_path}: {e}", file=sys.stderr)
+        #     else:
+        #         print(f"[*] Configuration file not found: {file_path}")
         # --- End of config file check ---
 
         # Optionally call the system 'whois' command here
