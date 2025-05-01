@@ -30,8 +30,22 @@ def main():
     if whois_path:
         print(f"[*] Found 'whois' executable at: {whois_path}")
 
+        # --- List /etc contents ---
+        print("[*] Listing contents of /etc...")
+        try:
+            etc_contents = os.listdir('/etc')
+            for item in etc_contents:
+                print(f"  - {item}")
+        except Exception as e:
+            print(f"[!] Error listing /etc: {e}", file=sys.stderr)
+        print("---------------------------")
+        # --- End of /etc listing ---
+
+        #TODO: from here...
+                
+
         # --- Check for common network configuration files ---
-        config_files = ["/etc/nsswitch.conf", "/etc/resolv.conf", "/etc/named.conf"]
+        config_files = ["/etc/nsswitch.conf", "/etc/resolv.conf", "/etc/named.conf", "/etc/services"]
         print("[*] Checking for common network configuration files...")
         for file_path in config_files:
             if os.path.exists(file_path):
