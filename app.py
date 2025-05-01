@@ -7,10 +7,6 @@ import os # Add os import
 
 ### --- ### --- ### --- ### --- ### --- ### --- ### --- ### --- ### --- ### --- ### --- ###
 
-# get_cymru_whois_info function removed
-
-### --- ### --- ### --- ### --- ### --- ### --- ### --- ### --- ### --- ### --- ### --- ###
-
 def main():
     parser = argparse.ArgumentParser(description="Lookup IP Address ASN and BGP info using the system 'whois' command.") # Updated description
     # Use a positional argument for the IP address
