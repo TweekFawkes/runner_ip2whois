@@ -16,5 +16,5 @@ webform:
     type: text
 
 launch:
-  type: binary
-  command: whois ${ip_address}
+  type: python
+  command: app.py ${ip_address}
