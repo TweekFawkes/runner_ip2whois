@@ -3,6 +3,7 @@ import argparse
 import sys
 import shutil # Add shutil import
 import subprocess # Add subprocess import
+import os # Add os import
 
 ### --- ### --- ### --- ### --- ### --- ### --- ### --- ### --- ### --- ### --- ### --- ###
 
@@ -28,6 +29,24 @@ def main():
     whois_path = shutil.which("whois")
     if whois_path:
         print(f"[*] Found 'whois' executable at: {whois_path}")
+
+        # --- Check for common network configuration files ---
+        config_files = ["/etc/nsswitch.conf", "/etc/resolv.conf", "/etc/named.conf"]
+        print("[*] Checking for common network configuration files...")
+        for file_path in config_files:
+            if os.path.exists(file_path):
+                print(f"[*] Found configuration file: {file_path}")
+                try:
+                    with open(file_path, 'r') as f:
+                        print(f"--- Contents of {file_path} ---")
+                        print(f.read().strip())
+                        print(f"------------------------------")
+                except Exception as e:
+                    print(f"[!] Error reading {file_path}: {e}", file=sys.stderr)
+            else:
+                print(f"[*] Configuration file not found: {file_path}")
+        # --- End of config file check ---
+
         # Optionally call the system 'whois' command here
         print(f"[*] Running system 'whois' command for {ip_address}...")
         try:
